@@ -1,0 +1,33 @@
+.wrapper {
+  min-height: 100vh;
+  background: black;
+  --left: 300px;
+  --right: 400px;
+  --middle: calc(100% - var(--left) - var(--right));
+}
+
+.content {
+  max-width: 1300px;
+  margin: 0 auto;
+  width: 100%;
+  display: flex;
+}
+
+.left-sidebar {
+  height: 100vh;
+  width: var(--left);
+  position: sticky;
+  top: 0;
+}
+
+.main-content {
+  position: relative;
+  width: var(--middle);
+  border-left: 1px solid #333;
+  border-right: 1px solid #333;
+  min-height: 100vh;
+}
+
+.right-sidebar {
+  width: var(--right);
+}
