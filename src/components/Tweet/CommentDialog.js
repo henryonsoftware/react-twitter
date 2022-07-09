@@ -12,7 +12,7 @@ function CommentDialog({ activity, onPostComment, onClickOutside }) {
 
   const tweetActor = activity.actor
 
-  const onSubmit = async (text) => {
+  const handleSubmit = async (text) => {
     await onPostComment(text)
 
     onClickOutside()
@@ -46,7 +46,7 @@ function CommentDialog({ activity, onPostComment, onClickOutside }) {
               className={cx('comment-form')}
               submitText="Reply"
               placeholder="Tweet your reply"
-              onSubmit={onSubmit}
+              onSubmit={handleSubmit}
               shouldFocus={true}
             ></TweetForm>
           </div>

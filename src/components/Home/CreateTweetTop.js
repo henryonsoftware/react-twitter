@@ -1,13 +1,13 @@
 import TweetForm from '../Tweet/TweetForm'
 
 function CreateTweetTop() {
-  const onSubmit = async (text) => {
+  const handleSubmit = async (text) => {
     // create tweet here
   }
 
   return (
     <div>
-      <TweetForm placeholder="What's happening?" onSubmit={onSubmit} />
+      <TweetForm placeholder="What's happening?" onSubmit={handleSubmit} />
     </div>
   )
 }
