@@ -6,7 +6,6 @@ import users from './users'
 import { getFromStorage } from './utils/storage'
 import StartPage from './pages/StartPage'
 import ScrollToTop from './components/ScrollToTop'
-import TweetForm from './components/Tweet/TweetForm'
 
 const APP_ID = '1197595'
 const API_KEY = 'mnahj4hug5pj'
@@ -37,7 +36,6 @@ function App({ onClickTweet }) {
   return (
     <StreamApp token={user.token} appId={APP_ID} apiKey={API_KEY}>
       <Router>
-        <TweetForm placeholder="What's happening?" />
         <ScrollToTop />
         <Routes>
           <Route path="/" element={<StartPage />} />
