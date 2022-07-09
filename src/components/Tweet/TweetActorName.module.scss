@@ -1,0 +1,35 @@
+.wrapper {
+  display: flex;
+
+  &:hover .fullname {
+    text-decoration: underline;
+  }
+}
+
+.fullname {
+  color: white;
+  font-weight: bold;
+}
+
+.username {
+  margin-left: 5px;
+  color: #777;
+}
+
+.tweet-date {
+  margin-left: 15px;
+  color: #777;
+  position: relative;
+
+  &::after {
+    content: '';
+    width: 2px;
+    height: 2px;
+    background-color: #777;
+    position: absolute;
+    left: -8px;
+    top: 0;
+    bottom: 0;
+    margin: auto 0;
+  }
+}
