@@ -4,7 +4,7 @@ function FollowBtn({ userId }) {
   const [following, setFollowing] = useState(false)
 
   return (
-    <Container>
+    <div>
       <button className={following ? 'following' : 'not-following'} onClick={() => setFollowing(!following)}>
         {following ? (
           <div className="follow-text">
@@ -15,7 +15,7 @@ function FollowBtn({ userId }) {
           'Follow'
         )}
       </button>
-    </Container>
+    </div>
   )
 }
 

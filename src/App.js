@@ -5,6 +5,7 @@ import { StreamApp } from 'react-activity-feed'
 import users from './users'
 import { getFromStorage } from './utils/storage'
 import StartPage from './pages/StartPage'
+import HomePage from './pages/HomePage'
 import ScrollToTop from './components/ScrollToTop'
 
 const APP_ID = '1197595'
@@ -39,6 +40,7 @@ function App({ onClickTweet }) {
         <ScrollToTop />
         <Routes>
           <Route path="/" element={<StartPage />} />
+          <Route path="/home" element={<HomePage />} />
         </Routes>
       </Router>
     </StreamApp>

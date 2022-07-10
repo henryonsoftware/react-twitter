@@ -1,4 +1,9 @@
+import classNames from 'classnames/bind'
 import { format } from 'date-fns'
+import { Link } from 'react-router-dom'
+import styles from './TweetActorName.module.scss'
+
+const cx = classNames.bind(styles)
 
 function TweetActorName({ time, name, id }) {
   const diffTime = Date.now() - new Date(time).getTime()
@@ -16,11 +21,11 @@ function TweetActorName({ time, name, id }) {
     : format(new Date(time), 'MMM d')
 
   return (
-    <TextBlock to={`/${id}`}>
+    <Link to={`/${id}`}>
       <span className={cx('fullname')}>{name}</span>
       <span className={cx('username')}>@{id}</span>
       <span className={cx('tweet-date')}>{timeText}</span>
-    </TextBlock>
+    </Link>
   )
 }
 

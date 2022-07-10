@@ -2,12 +2,13 @@ import classNames from 'classnames/bind'
 import { useEffect, useRef, useState } from 'react'
 import { useStreamContext } from 'react-activity-feed'
 import ProgressRing from '../Icons/ProgressRing'
-import styles from './TweetForm.module.scss'
 import Image from '../Icons/Image'
 import Gif from '../Icons/Gif'
 import Poll from '../Icons/Poll'
 import Emoji from '../Icons/Emoji'
 import Calendar from '../Icons/Calendar'
+import Location from '../Icons/Location'
+import styles from './TweetForm.module.scss'
 
 const cx = classNames.bind(styles)
 
@@ -98,9 +99,9 @@ function TweetForm({
         </span>
       )}
 
-      <div minHeight={minHeight + 'px'} className={cx('form', className)} onSubmit={submit}>
+      <div minheight={minHeight + 'px'} className={cx('form', className)} onSubmit={submit}>
         <div className={cx('user')}>
-          <img class={cx('avatar')} src={user.image} alt={user.name} />
+          <img className={cx('avatar')} src={user.image} alt={user.name} />
         </div>
 
         <div className={cx('input-section')}>

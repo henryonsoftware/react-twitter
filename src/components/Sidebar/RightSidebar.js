@@ -1,9 +1,12 @@
 import classNames from 'classnames/bind'
+import { Link } from 'react-router-dom'
 import { useState } from 'react'
 import { useStreamContext } from 'react-activity-feed'
 import Search from '../Icons/Search'
+import More from '../Icons/More'
 import FollowBtn from '../FollowBtn'
 import styles from './Sidebar.module.scss'
+import users from '../../users'
 
 const cx = classNames.bind(styles)
 
