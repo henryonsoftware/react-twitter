@@ -1,0 +1,134 @@
+.left-inner {
+  padding-left: 12px;
+  padding-right: 12px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  width: 50px;
+  height: 50px;
+  color: var(--primaryColor);
+}
+
+.buttons {
+  margin-bottom: 4px;
+}
+
+.menu-item {
+  display: flex;
+  align-items: center;
+  padding: 4px 0;
+
+  &:hover > .menu-item-inner {
+    background-color: rgba(15, 20, 25, 0.1);
+    transition-property: background-color, box-shadow;
+    transition-duration: 0.2s;
+    border-radius: 9999px;
+  }
+}
+
+.menu-item-inner {
+  display: flex;
+  padding: 12px;
+}
+
+.menu-item-label {
+  color: rgb(15, 20, 25);
+  margin-left: 20px;
+  margin-right: 16px;
+  font-family: 'TwitterChirp';
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 24px;
+
+  &.active {
+    font-weight: 700;
+  }
+}
+
+.btn-icon {
+  color: rgb(15, 20, 25);
+}
+
+.tweet-btn {
+  background-color: var(--primaryColor);
+  color: #fff;
+  box-shadow: rgba(0, 0, 0, 0.08) 0px 8px 28px;
+  border-radius: 9999px;
+  min-width: 52px;
+  min-height: 52px;
+  width: 90%;
+  text-align: center;
+  margin: 4px 0;
+  padding: 0 32px;
+  font-size: 17px;
+  font-weight: 700;
+  font-family: 'TwitterChirp';
+
+  &:hover {
+    background-color: rgb(26, 140, 216);
+    transition-duration: 0.2s;
+    transition-property: background-color, box-shadow;
+  }
+}
+
+// Profile section
+.profile-section {
+  margin-top: 12px;
+  margin-bottom: 12px;
+  padding: 0;
+  width: 100%;
+}
+
+.details {
+  display: flex;
+  align-items: center;
+  padding: 12px;
+
+  &:hover {
+    background-color: rgba(15, 20, 25, 0.1);
+    transition-property: background-color, box-shadow;
+    transition-delay: 0.2s;
+    border-radius: 9999px;
+  }
+}
+
+.detail-img {
+  display: flex;
+  align-items: center;
+
+  img {
+    width: 40px;
+    border-radius: 50%;
+  }
+}
+
+.detail-text {
+  margin: 0 12px;
+
+  .name {
+    font-size: 15px;
+    font-weight: 700;
+  }
+
+  .username {
+    font-family: 'TwitterChirp', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    font-size: 15px;
+    font-weight: 400;
+    color: rgb(83, 100, 113);
+  }
+}
+
+.detail-more-btn {
+  flex-grow: 1;
+  display: flex;
+
+  svg {
+    margin-left: auto;
+  }
+}

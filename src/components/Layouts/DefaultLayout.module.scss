@@ -1,7 +1,7 @@
 .wrapper {
-  min-height: 100vh;
-  background: black;
-  --left: 300px;
+  min-height: 835px;
+  background: #fff;
+  --left: 251px;
   --right: 400px;
   --middle: calc(100% - var(--left) - var(--right));
 }
@@ -11,20 +11,21 @@
   margin: 0 auto;
   width: 100%;
   display: flex;
+  flex-direction: row;
 }
 
 .left-sidebar {
-  height: 100vh;
+  height: 100%;
   width: var(--left);
-  position: sticky;
+  position: fixed;
   top: 0;
 }
 
 .main-content {
   position: relative;
   width: var(--middle);
-  border-left: 1px solid #333;
-  border-right: 1px solid #333;
+  border-left: 1px solid rgb(239, 243, 244);
+  border-right: 1px solid rgb(239, 243, 244);
   min-height: 100vh;
 }
 

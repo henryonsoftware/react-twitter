@@ -2,15 +2,20 @@ import { useState } from 'react'
 import { useStreamContext } from 'react-activity-feed'
 import { useLocation } from 'react-router-dom'
 import { Link } from 'react-router-dom'
-import classNames from 'classnames'
+import classNames from 'classnames/bind'
 import LoadingIndicator from '../LoadingIndicator'
 import Home from '../Icons/Home'
 import Hashtag from '../Icons/Hashtag'
 import Mail from '../Icons/Mail'
 import Bookmark from '../Icons/Bookmark'
+import Bell from '../Icons/Bell'
+import User from '../Icons/User'
+import Twitter from '../Icons/Twitter'
+import More from '../Icons/More'
+import MoreDot from '../Icons/MoreDot'
 import styles from './Sidebar.module.scss'
 
-const cx = classNames(styles)
+const cx = classNames.bind(styles)
 
 function Sidebar({ onClickTweet }) {
   const location = useLocation()
@@ -19,9 +24,9 @@ function Sidebar({ onClickTweet }) {
 
   if (!userData) {
     return (
-      <Container>
+      <div>
         <LoadingIndicator />
-      </Container>
+      </div>
     )
   }
 
@@ -49,74 +54,78 @@ function Sidebar({ onClickTweet }) {
       label: 'Messages',
       Icon: Mail,
     },
-    {
-      id: 'bookmarks',
-      label: 'Bookmarks',
-      Icon: Bookmark,
-    },
+    // {
+    //   id: 'bookmarks',
+    //   label: 'Bookmarks',
+    //   Icon: Bookmark,
+    // },
     {
       id: 'profile',
       label: 'Profile',
       Icon: User,
       link: `/${userData.id}`,
     },
+    {
+      id: '',
+      label: 'More',
+      Icon: More,
+    },
   ]
 
   return (
-    <Container>
-      <Link to="/" className={cx('header')}>
-        <Twitter color="white" size={23} />
-      </Link>
-      <div className={cx('buttons')}>
-        {menus.map((menu) => {
-          const isActiveLink =
-            location.pathname === `/${menu.id}` || (menu.id === 'profile' && location.pathname === `/${userData.id}`)
+    <div className={cx('left-inner')}>
+      <div>
+        <Link to="/" className={cx('logo')}>
+          <Twitter width={50} height={30} />
+        </Link>
+        <div className={cx('buttons')}>
+          {menus.map((menu) => {
+            const isActiveLink =
+              location.pathname === `/${menu.id}` || (menu.id === 'profile' && location.pathname === `/${userData.id}`)
 
-          return (
-            <Link
-              to={menu.link ?? '#'}
-              className={cx(`btn-${menu.id} new-tweets`, isActiveLink && 'active')}
-              key={menu.id}
-              onClick={menu.onClick}
-            >
-              <div className="btn--icon">
-                {newNotifications && menu.id === 'notifications' ? (
-                  <span className="notifications-count">{newNotifications}</span>
-                ) : null}
-                <menu.Icon fill={isActiveLink} color="white" size={25} />
-              </div>
-              <span>{menu.label}</span>
-            </Link>
-          )
-        })}
+            return (
+              <Link
+                to={menu.link ?? '#'}
+                className={cx(`btn-${menu.id}`, 'menu-item', isActiveLink && 'active')}
+                key={menu.id}
+                onClick={menu.onClick}
+              >
+                <div className={cx('menu-item-inner')}>
+                  <div className={cx('btn-icon')}>
+                    {newNotifications && menu.id === 'notifications' ? (
+                      <span className="notifications-count">{newNotifications}</span>
+                    ) : null}
+                    <menu.Icon fill={isActiveLink} width={26} height={26} />
+                  </div>
+                  <span className={cx('menu-item-label', isActiveLink && 'active')}>{menu.label}</span>
+                </div>
+              </Link>
+            )
+          })}
+        </div>
 
-        <button className={cx('btn-more')}>
-          <div className={cx('btn-icon')}>
-            <More color="white" size={20} />
-          </div>
-          <span>More</span>
+        <button onClick={onClickTweet} className={cx('tweet-btn')}>
+          Tweet
         </button>
       </div>
-
-      <button onClick={onClickTweet} className={cx('tweet-btn')}>
-        Tweet
-      </button>
 
       <button className={cx('profile-section')}>
         <div className={cx('details')}>
           <div className={cx('detail-img')}>
             <img src={userData.image} alt={userData.name} />
           </div>
-          <div className={cx('detail-text')}>
-            <span className={cx('name')}>{userData.name}</span>
-            <span className={cx('username')}>@{userData.id}</span>
+          <div>
+            <div className={cx('detail-text')}>
+              <span className={cx('name')}>{userData.name}</span>
+              <span className={cx('username')}>@{userData.id}</span>
+            </div>
+          </div>
+          <div className={cx('detail-more-btn')}>
+            <MoreDot width={19} height={19} />
           </div>
         </div>
-        <div>
-          <More color="white" />
-        </div>
       </button>
-    </Container>
+    </div>
   )
 }
 
