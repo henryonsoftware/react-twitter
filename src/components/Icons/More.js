@@ -1,6 +1,6 @@
 export default function More({ width, height }) {
   return (
-    <svg width={width} height={height} viewBox="0 0 24 24" aria-hidden="true" fill="currentColor">
+    <svg width={width} height={height} viewBox="0 0 24 24" ariaHidden="true" fill="currentColor">
       <g>
         <circle cx="17" cy="12" r="1.5"></circle>
         <circle cx="12" cy="12" r="1.5"></circle>

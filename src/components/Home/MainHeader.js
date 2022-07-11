@@ -8,7 +8,9 @@ function MainHeader() {
   return (
     <div className={cx('header-wrapper')}>
       <h1 className={cx('header-home-text')}>Home</h1>
-      <Star color="white" />
+      <div className={cx('top-tweets-icon')}>
+        <Star width={20} height={20} />
+      </div>
     </div>
   )
 }

@@ -4,13 +4,9 @@ export default function ProgressRing({ radius, stroke, progress, color }) {
   const strokeDashoffset = circumference - (progress / 100) * circumference
 
   return (
-    <svg
-      style={{ transform: 'rotate(-90deg)' }}
-      height={radius * 2}
-      width={radius * 2}
-    >
+    <svg style={{ transform: 'rotate(-90deg)' }} height={radius * 2} width={radius * 2}>
       <circle
-        stroke="#333"
+        stroke="#EFF3F4"
         fill="transparent"
         strokeWidth={stroke}
         strokeDasharray={circumference + ' ' + circumference}

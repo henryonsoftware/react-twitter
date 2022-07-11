@@ -51,7 +51,6 @@ function TweetForm({
   className,
   placeholder,
   collapsedOnMount = false,
-  minHeight = 120,
   shouldFocus = false,
   replyingTo = null,
 }) {
@@ -89,6 +88,7 @@ function TweetForm({
   const charsLeft = MAX_INPUT_LENGTH - text.length
   const maxAlmostReached = charsLeft <= 20
   const exceededMaxLength = charsLeft < 0
+  const exceededMaxLengthMoreThan10Chars = text.length - MAX_INPUT_LENGTH >= 10
   const percentage = text.length > MAX_INPUT_LENGTH ? 100 : (text.length / MAX_INPUT_LENGTH) * 100
 
   return (
@@ -99,38 +99,58 @@ function TweetForm({
         </span>
       )}
 
-      <div minheight={minHeight + 'px'} className={cx('form', className)} onSubmit={submit}>
+      <div onSubmit={submit} className={cx('form', className)}>
         <div className={cx('user')}>
           <img className={cx('avatar')} src={user.image} alt={user.name} />
         </div>
 
-        <div className={cx('input-section')}>
-          <textarea
-            ref={inputRef}
-            onChange={(e) => setText(e.target.value)}
-            placeholder={placeholder}
-            value={text}
-            onClick={onClick}
-          />
+        <div className={cx('input-wrapper')}>
+          <div className={cx('input-section')}>
+            <textarea
+              ref={inputRef}
+              onChange={(e) => {
+                setText(e.target.value)
+
+                // Increase height
+                e.target.style.height = '5px'
+                e.target.style.height = e.target.scrollHeight + 'px'
+              }}
+              placeholder={placeholder}
+              value={text}
+              onClick={onClick}
+            />
+          </div>
+
           <div className={cx('actions')}>
-            {expanded &&
-              actions.map((action) => {
-                return (
-                  <button
-                    className={cx('action-item')}
-                    type="button"
-                    disabled={action.id === 'location' && 'disabled'}
-                    key={action.id}
-                  >
-                    <action.Icon size={19} color="var(--theme-color)" />
-                  </button>
-                )
-              })}
-            <div className="right">
+            <div className={cx('action-items')}>
+              {expanded &&
+                actions.map((action) => {
+                  return (
+                    <button
+                      className={cx('action-item')}
+                      type="button"
+                      disabled={action.id === 'location' && 'disabled'}
+                      key={action.id}
+                    >
+                      <action.Icon width={20} height={20} />
+                    </button>
+                  )
+                })}
+            </div>
+
+            <div className={cx('right')}>
               {!isInputEmpty && (
-                <div className="tweet-length">
+                <div className={cx('tweet-length')}>
                   <ProgressRing
-                    color={exceededMaxLength ? 'red' : maxAlmostReached ? '#ffd400' : 'var(--theme-color)'}
+                    color={
+                      exceededMaxLengthMoreThan10Chars
+                        ? '#fff'
+                        : exceededMaxLength
+                        ? 'red'
+                        : maxAlmostReached
+                        ? '#ffd400'
+                        : 'var(--primaryColor)'
+                    }
                     radius={maxAlmostReached ? 19 : 14}
                     stroke={2.2}
                     progress={percentage}
@@ -141,8 +161,9 @@ function TweetForm({
                 </div>
               )}
 
-              {!isInputEmpty && <hr className="divider" />}
-              <button type="submit" className="submit-btn" disabled={isInputEmpty}>
+              {!isInputEmpty && <hr className={cx('divider')} />}
+
+              <button type="submit" className={cx('submit-btn')} disabled={isInputEmpty || exceededMaxLength}>
                 {submitText}
               </button>
             </div>

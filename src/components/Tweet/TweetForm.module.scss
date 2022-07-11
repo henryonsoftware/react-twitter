@@ -22,8 +22,8 @@
 }
 
 .user {
-  width: 40px;
-  height: 40px;
+  width: 48px;
+  height: 48px;
   border-radius: 50%;
   overflow: hidden;
   margin-right: 15px;
@@ -35,36 +35,74 @@
   object-fit: cover;
 }
 
+.input-wrapper {
+  flex: 1;
+}
+
 .input-section {
   width: 100%;
   display: flex;
-  flex: 1;
+  color: #536471;
+  overflow-wrap: break-word;
   // flex-direction: ${({ inline }) => (inline ? 'row' : 'column')};
   // align-items: ${({ inline }) => (inline ? 'center' : 'initial')};
   // height: ${({ inline, minHeight }) => (inline ? '40px' : minHeight)};
 }
 
 textarea {
-  padding-top: 10px;
+  padding: 10px 0;
   background: none;
   border: none;
-  padding-bottom: 0;
-  font-size: 18px;
+  font-size: 20px;
+  line-height: 26px;
   width: 100%;
   flex: 1;
-  resize: none;
   outline: none;
-  color: white;
+  border-bottom: 1px solid #fff;
+  overflow: hidden;
+  resize: none;
+
+  &:focus {
+    border-color: var(--borderColor);
+  }
+
+  &::placeholder {
+    color: #536471;
+    opacity: 1;
+    font-weight: 500;
+  }
 }
 
 .actions {
   // margin-top: ${({ inline }) => (inline ? '0' : 'auto')};
-  display: flex;
+  margin-left: -6px;
   height: 50px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.action-items {
+  display: flex;
   align-items: center;
 }
 
 .action-item {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  color: var(--primaryColor);
+  border-radius: 9999px;
+  border: 1px slid #fff;
+
+  &:hover {
+    background-color: rgba(29, 155, 240, 0.1);
+    transition-property: background-color, box-shadow;
+  }
+
   &:disabled {
     opacity: 0.5;
   }
@@ -74,10 +112,19 @@ textarea {
   margin-left: auto;
   display: flex;
   align-items: center;
+
+  .divider {
+    background-color: rgb(185, 202, 211);
+    height: 31px;
+    width: 1px;
+    margin: 0 10px 0 5px;
+  }
 }
 
 .tweet-length {
   position: relative;
+  min-width: 30px;
+  min-height: 30px;
 
   svg {
     position: relative;
@@ -87,8 +134,8 @@ textarea {
 
 .tweet-length-text {
   position: absolute;
-  color: #888;
-  font-size: 14px;
+  color: rgb(83, 100, 113);
+  font-size: 13px;
   top: 0;
   bottom: 0;
   left: 0;
@@ -111,13 +158,13 @@ textarea {
 }
 
 .submit-btn {
-  background-color: var(--theme-color);
+  background-color: var(--primaryColor);
   padding: 10px 20px;
   color: white;
   border-radius: 30px;
   margin-left: auto;
   font-weight: bold;
-  font-size: 16px;
+  font-size: 15px;
 
   &:disabled {
     opacity: 0.6;

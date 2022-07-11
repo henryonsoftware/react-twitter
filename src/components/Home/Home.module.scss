@@ -1,28 +1,49 @@
+// MAIN HEADER
 .header-wrapper {
   display: flex;
   align-items: center;
-  padding: 15px;
-  color: white;
+  padding: 0 15px;
   width: 100%;
   font-weight: bold;
   justify-content: space-between;
   backdrop-filter: blur(2px);
-  background-color: rgba(0, 0, 0, 0.5);
+  // background-color: rgba(0, 0, 0, 0.5);
 }
 
 .header-home-text {
   font-size: 20px;
 }
 
-// HomeContent
+.top-tweets-icon {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+
+  &:hover {
+    background-color: rgba(15, 20, 25, 0.1);
+    border-radius: 50%;
+    transition-property: background-color;
+    transition-duration: 0.2s;
+  }
+}
+
+// HOME CONTENT
 .header {
   position: sticky;
   top: 0;
   z-index: 1;
+  background-color: rgba(255, 255, 255, 0.97);
+  height: 53px;
+  display: flex;
+  align-items: center;
 }
 
 .create-tweet-top {
-  border-bottom: 1px solid #333;
+  border-bottom: 1px solid var(--borderColor);
+  padding: 4px 16px;
 }
 
 // .new-tweets-info {
