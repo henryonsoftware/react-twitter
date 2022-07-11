@@ -7,7 +7,6 @@ import LoadingIndicator from '../LoadingIndicator'
 import Home from '../Icons/Home'
 import Hashtag from '../Icons/Hashtag'
 import Mail from '../Icons/Mail'
-import Bookmark from '../Icons/Bookmark'
 import Bell from '../Icons/Bell'
 import User from '../Icons/User'
 import Twitter from '../Icons/Twitter'
@@ -17,7 +16,7 @@ import styles from './Sidebar.module.scss'
 
 const cx = classNames.bind(styles)
 
-function Sidebar({ onClickTweet }) {
+function LeftSidebar({ onClickTweet }) {
   const location = useLocation()
   const { userData } = useStreamContext()
   const [newNotifications, setNewNotifications] = useState(0)
@@ -129,4 +128,4 @@ function Sidebar({ onClickTweet }) {
   )
 }
 
-export default Sidebar
+export default LeftSidebar
