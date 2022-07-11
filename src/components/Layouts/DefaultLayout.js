@@ -21,11 +21,11 @@ function DefaultLayout({ children }) {
 
   return (
     <>
-      {createDialogOpened && <CreateTweetDialog onClickOutside={setCreateDialogOpened(false)} />}
+      {createDialogOpened && <CreateTweetDialog onClickOutside={() => setCreateDialogOpened(false)} />}
       <div className={cx('wrapper')}>
         <div className={cx('content')}>
           <div className={cx('left-sidebar')}>
-            <LeftSidebar onClickTweet={() => setCreateDialogOpened(true)} />
+            <LeftSidebar onClickTweetBtn={() => setCreateDialogOpened(true)} />
           </div>
           <main className={cx('main-content')}>{user ? children : <LoadingIndicator />}</main>
           <div className={cx('right-sidebar')}>

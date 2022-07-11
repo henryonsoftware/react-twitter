@@ -16,7 +16,7 @@ import styles from './Sidebar.module.scss'
 
 const cx = classNames.bind(styles)
 
-function LeftSidebar({ onClickTweet }) {
+function LeftSidebar({ onClickTweetBtn }) {
   const location = useLocation()
   const { userData } = useStreamContext()
   const [newNotifications, setNewNotifications] = useState(0)
@@ -53,11 +53,6 @@ function LeftSidebar({ onClickTweet }) {
       label: 'Messages',
       Icon: Mail,
     },
-    // {
-    //   id: 'bookmarks',
-    //   label: 'Bookmarks',
-    //   Icon: Bookmark,
-    // },
     {
       id: 'profile',
       label: 'Profile',
@@ -77,6 +72,7 @@ function LeftSidebar({ onClickTweet }) {
         <Link to="/" className={cx('logo')}>
           <Twitter width={50} height={30} />
         </Link>
+
         <div className={cx('buttons')}>
           {menus.map((menu) => {
             const isActiveLink =
@@ -103,7 +99,7 @@ function LeftSidebar({ onClickTweet }) {
           })}
         </div>
 
-        <button onClick={onClickTweet} className={cx('tweet-btn')}>
+        <button onClick={onClickTweetBtn} className={cx('tweet-btn')}>
           Tweet
         </button>
       </div>

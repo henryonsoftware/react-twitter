@@ -1,12 +1,12 @@
 import classNames from 'classnames/bind'
-import Modal from '../Modal'
+import Modal from '../Modals/NewTweet/Modal'
 import TweetForm from './TweetForm'
 import styles from './CreateTweetDialog.module.scss'
 
 const cx = classNames.bind(styles)
 
 function CreateTweetDialog({ onClickOutside }) {
-  const onSubmit = async (text) => {
+  const handleOnSubmit = async (text) => {
     // create tweet
 
     onClickOutside()
@@ -15,10 +15,10 @@ function CreateTweetDialog({ onClickOutside }) {
     <div>
       <Modal className={cx('modal-block')} onClickOutside={onClickOutside}>
         <TweetForm
-          onSubmit={onSubmit}
-          className="tweet-form"
+          onSubmit={handleOnSubmit}
+          className={cx('tweet-form')}
           placeholder="What's happening?"
-          minHeight={240}
+          rows={4}
           shouldFocus={true}
         ></TweetForm>
       </Modal>

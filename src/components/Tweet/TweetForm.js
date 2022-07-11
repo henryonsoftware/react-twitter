@@ -53,6 +53,7 @@ function TweetForm({
   collapsedOnMount = false,
   shouldFocus = false,
   replyingTo = null,
+  rows = null,
 }) {
   const MAX_INPUT_LENGTH = 280
   const inputRef = useRef()
@@ -107,6 +108,7 @@ function TweetForm({
         <div className={cx('input-wrapper')}>
           <div className={cx('input-section')}>
             <textarea
+              rows={rows}
               ref={inputRef}
               onChange={(e) => {
                 setText(e.target.value)

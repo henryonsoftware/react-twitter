@@ -1,6 +1,6 @@
 import classNames from 'classnames/bind'
 import styles from './CommentDialog.module.scss'
-import Modal from '../Modal'
+import Modal from '../Modals/NewTweet/Modal'
 import TweetActorName from './TweetActorName'
 import TweetForm from './TweetForm'
 import { formatStringWithLink } from '../../utils/string'
