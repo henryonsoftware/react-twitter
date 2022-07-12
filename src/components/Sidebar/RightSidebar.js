@@ -3,9 +3,10 @@ import { Link } from 'react-router-dom'
 import { useState } from 'react'
 import { useStreamContext } from 'react-activity-feed'
 import Search from '../Icons/Search'
-import More from '../Icons/More'
+import MoreDot from '../Icons/MoreDot'
+import Clear from '../Icons/Clear'
 import FollowBtn from '../FollowBtn'
-import styles from './Sidebar.module.scss'
+import styles from './RightSidebar.module.scss'
 import users from '../../users'
 
 const cx = classNames.bind(styles)
@@ -34,19 +35,26 @@ function RightSidebar() {
   return (
     <div className={cx('wrapper')}>
       <div className={cx('search-container')}>
-        <form className={cx('search-form')}>
-          <div className={cx('search-icon')}>
-            <Search color="rgba(85,85,85,1)" />
-          </div>
-          <input onChange={(e) => setSearchText(e.target.value)} value={searchText} />
-          <button
-            className={cx(!Boolean(searchText) && 'hide', 'submit-btn')}
-            type="button"
-            onClick={() => setSearchText('')}
-          >
-            X
-          </button>
-        </form>
+        <div className={cx('search-form-wrapper')}>
+          <form className={cx('search-form')}>
+            <div className={cx('search-icon')}>
+              <Search width={44} height={19} />
+            </div>
+            <input
+              className={cx('search-input')}
+              onChange={(e) => setSearchText(e.target.value)}
+              value={searchText}
+              placeholder="Search Twitter"
+            />
+            <button
+              className={cx(!Boolean(searchText) && 'hide', 'clear-input-btn')}
+              type="button"
+              onClick={() => setSearchText('')}
+            >
+              <Clear width={10} height={10} />
+            </button>
+          </form>
+        </div>
       </div>
 
       <div className={cx('trends')}>
@@ -55,20 +63,22 @@ function RightSidebar() {
           {trends.map((trend, index) => {
             return (
               <div className={cx('trend')} key={`${trend.title}-${index}`}>
-                <div className={cx('detail')}>
-                  <div className={cx('category')}>
-                    {trend.category}
-                    <span className={cx('category-label')}>Trending</span>
-                  </div>
+                <div className={cx('category')}>Trending in {trend.category}</div>
+                <div>
                   <span className={cx('title')}>{trend.title}</span>
-                  <span className={cx('tweet-count')}>{trend.tweetsCount} Tweets</span>
                 </div>
-                <button className={cx('more-btn')}>
-                  <More color="white" />
+                <span className={cx('tweet-count')}>{trend.tweetsCount} Tweets</span>
+                <button className={cx('more-btn')} title="More">
+                  <MoreDot width={19} height={19} />
                 </button>
               </div>
             )
           })}
+          <div className={cx('trend')}>
+            <a href="#" className={cx('show-more-trend')}>
+              Show more
+            </a>
+          </div>
         </div>
       </div>
 
@@ -82,17 +92,29 @@ function RightSidebar() {
                   <div className={cx('user-img')}>
                     <img src={user.image} alt={user.name} />
                   </div>
-                  <div className={cx('user-info')}>
-                    <span className={cx('fullname')}>{user.name}</span>
-                    <span className={cx('username')}>@{user.id}</span>
+                  <div className={cx('user-right-side')}>
+                    <div className={cx('user-info')}>
+                      <span className={cx('fullname')}>{user.name}</span>
+                      <div className={cx('username-wrapper')}>
+                        <span className={cx('username')}>@{user.id}</span>
+                        {!user.isFollowingYou && <span className={cx('follows-you')}>Follows you</span>}
+                      </div>
+                    </div>
+                    <div className={cx('follow-btn')}>
+                      <FollowBtn userId={user.id} />
+                    </div>
                   </div>
                 </Link>
-                <FollowBtn userId={user.id} />
               </div>
             )
           })}
+
+          <div className={cx('user')}>
+            <a href="#" className={cx('show-more-follow')}>
+              Show more
+            </a>
+          </div>
         </div>
-        <span className={cx('show-more-text')}>Show more</span>
       </div>
     </div>
   )
