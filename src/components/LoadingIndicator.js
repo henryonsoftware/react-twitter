@@ -37,7 +37,7 @@ const Container = styled.div`
 
       height: 100%;
 
-      border-top: 2px solid var(--theme-color);
+      border-top: 2px solid var(--primaryColor);
 
       border-radius: 50%;
 
