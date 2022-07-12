@@ -105,7 +105,7 @@ function TweetBlock({ activity }) {
                   key={action.id}
                 >
                   <action.Icon
-                    color={action.id === 'heart' && hasLikedTweet ? 'var(--theme-color)' : '#777'}
+                    color={action.id === 'heart' && hasLikedTweet ? 'var(--primaryColor)' : '#777'}
                     size={17}
                     fill={action.id === 'heart' && hasLikedTweet && true}
                   />

@@ -45,7 +45,7 @@
   color: #666;
 
   &.colored {
-    color: var(--theme-color);
+    color: var(--primaryColor);
   }
 }
 
@@ -70,7 +70,7 @@
 }
 
 .tweet-text-link {
-  color: var(--theme-color);
+  color: var(--primaryColor);
   text-decoration: none;
 }
 
