@@ -12,7 +12,7 @@ import User from '../Icons/User'
 import Twitter from '../Icons/Twitter'
 import More from '../Icons/More'
 import MoreDot from '../Icons/MoreDot'
-import styles from './Sidebar.module.scss'
+import styles from './LeftSidebar.module.scss'
 
 const cx = classNames.bind(styles)
 
