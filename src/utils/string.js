@@ -1,4 +1,4 @@
-export function formatStringWithLink({ text, linkClass, noLink = false }) {
+export function formatStringWithLink(text, linkClass, noLink = false) {
   // regex to match links, hashtags and mentions
   const regex = /((https?:\/\/\S*)|(#\S*))|(@\S*)/gi
 

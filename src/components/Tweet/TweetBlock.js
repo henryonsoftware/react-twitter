@@ -6,7 +6,7 @@ import Comment from '../Icons/Comment'
 import Retweet from '../Icons/Retweet'
 import Heart from '../Icons/Heart'
 import Upload from '../Icons/Upload'
-import More from '../Icons/More'
+import MoreDot from '../Icons/MoreDot'
 import styles from './TweetBlock.module.scss'
 import TweetActorName from './TweetActorName'
 import CommentDialog from './CommentDialog'
@@ -22,9 +22,11 @@ function TweetBlock({ activity }) {
 
   const [commentDialogOpened, setCommentDialogOpened] = useState(false)
 
+  const [isHoveringOnId, setIsHoveringOnId] = useState('')
+
   const actor = activity.actor
 
-  let hasLikedTweet = false
+  let hasLikedTweet = true
 
   const tweet = activity.object.data
 
@@ -41,6 +43,14 @@ function TweetBlock({ activity }) {
 
   const handleOnPostComment = async (text) => {
     // create comment
+  }
+
+  const handleMouseOver = (id) => {
+    setIsHoveringOnId(id)
+  }
+
+  const handleMouseLeave = () => {
+    setIsHoveringOnId('')
   }
 
   const actions = [
@@ -75,21 +85,20 @@ function TweetBlock({ activity }) {
 
   return (
     <>
-      (
       <div className={cx('wrapper')}>
         <div className={cx('user-image')}>
           <img src={actor.data.image} alt={actor.data.name} />
         </div>
         <div className={cx('tweet')}>
           <button className={cx('link')}>
-            <TweetActorName time={activity.time} name={actor.name} id={actor.id} />
+            <TweetActorName time={activity.time} name={actor.data.name} id={actor.id} />
             <div className={cx('tweet-detail')}>
               <p
                 className={cx('tweet-text')}
-                dangerouslySetInnerHtml={{
+                dangerouslySetInnerHTML={{
                   __html: formatStringWithLink(tweet.text, 'tweet-text-link').replace(/\n/g, '<br />'),
                 }}
-              ></p>
+              />
             </div>
           </button>
 
@@ -97,31 +106,32 @@ function TweetBlock({ activity }) {
             {actions.map((action) => {
               return (
                 <button
+                  className={cx('action', isHoveringOnId === action.id ? `${action.id}-hovering` : '', {
+                    liked: action.id === 'heart' && hasLikedTweet,
+                  })}
                   type="button"
                   onClick={(e) => {
                     e.stopPropagation()
                     action.onClick?.()
                   }}
+                  onMouseOver={() => handleMouseOver(action.id)}
+                  onMouseLeave={handleMouseLeave}
                   key={action.id}
                 >
-                  <action.Icon
-                    color={action.id === 'heart' && hasLikedTweet ? 'var(--primaryColor)' : '#777'}
-                    size={17}
-                    fill={action.id === 'heart' && hasLikedTweet && true}
-                  />
-                  <span className={cx('tweet-action-value', { colored: action.id === 'heart' && hasLikedTweet })}>
-                    {action.value}
-                  </span>
+                  <div className={cx('tweet-action-icon')}>
+                    <div className={cx('icon-overlay')}></div>
+                    <action.Icon width={19} height={19} fill={action.id === 'heart' && hasLikedTweet && true} />
+                  </div>
+                  <span className={cx('tweet-action-value')}>{action.value}</span>
                 </button>
               )
             })}
           </div>
         </div>
-        <button className={cx('more')}>
-          <More color="#777" size={20} />
+        <button className={cx('more-btn')} title="More">
+          <MoreDot width={19} height={19} />
         </button>
       </div>
-      )
       {activity.id && commentDialogOpened && (
         <CommentDialog
           onPostComment={handleOnPostComment}

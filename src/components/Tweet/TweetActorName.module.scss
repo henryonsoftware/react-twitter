@@ -1,24 +1,35 @@
 .wrapper {
   display: flex;
+}
 
-  &:hover .fullname {
+.fullname {
+  color: rgb(15, 20, 25);
+  font-size: 15px;
+  font-weight: 700;
+  max-width: 100%;
+  overflow-wrap: break-word;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+
+  &:hover {
     text-decoration: underline;
   }
 }
 
-.fullname {
-  color: white;
-  font-weight: bold;
+.username,
+.tweet-date {
+  font-size: 15px;
+  font-weight: 400;
+  color: rgb(83, 100, 113);
 }
 
 .username {
   margin-left: 5px;
-  color: #777;
 }
 
 .tweet-date {
   margin-left: 15px;
-  color: #777;
   position: relative;
 
   &::after {

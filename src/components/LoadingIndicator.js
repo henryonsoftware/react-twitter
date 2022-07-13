@@ -11,10 +11,10 @@ const Container = styled.div`
 
   padding-top: 100px;
 
-  background-color: black;
+  background-color: transparent;
 
   .circle {
-    border: 2px solid #333;
+    border: 2px solid rgb(239, 243, 244);
 
     border-radius: 50%;
 

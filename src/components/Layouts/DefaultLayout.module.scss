@@ -2,8 +2,9 @@
   min-height: 835px;
   background: #fff;
   --left: 251px;
-  --right: 382px;
-  --middle: calc(100% - var(--left) - var(--right));
+  --middle: 600px;
+  --right: 350px;
+  // --middle: calc(100% - var(--left) - var(--right));
 }
 
 .content {
@@ -21,12 +22,22 @@
 
 .main-content {
   position: relative;
-  width: var(--middle);
+  width: 600px;
   border-left: 1px solid rgb(239, 243, 244);
   border-right: 1px solid rgb(239, 243, 244);
   min-height: 100vh;
+  align-items: flex-start;
+  flex-shrink: 1;
+}
+
+.content-inner {
+  display: flex;
+  justify-content: space-between;
+  width: 990px;
+  align-items: stretch;
 }
 
 .right-sidebar {
   width: var(--right);
+  margin-right: 10px;
 }

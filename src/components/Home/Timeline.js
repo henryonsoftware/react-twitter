@@ -3,6 +3,7 @@ import TweetBlock from '../Tweet/TweetBlock'
 
 function Timeline() {
   const { user } = useStreamContext()
+
   return (
     <div>
       <FlatFeed Activity={TweetBlock} userId={user.id} feedGroup="user" />

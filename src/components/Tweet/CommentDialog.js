@@ -35,7 +35,7 @@ function CommentDialog({ activity, onPostComment, onClickOutside }) {
                   dangerouslySetInnerHTML={{
                     __html: formatStringWithLink(tweet.text, 'tweet__text--link', true).replace(/\n/g, '<br/>'),
                   }}
-                ></p>
+                />
                 <div className={cx('replying-info')}>
                   Replying to <span className={cx('replying-info-actor')}>@{tweetActor.data.id}</span>
                 </div>

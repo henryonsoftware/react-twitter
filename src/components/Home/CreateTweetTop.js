@@ -1,8 +1,12 @@
+import useTweet from '../../hooks/useTweet'
 import TweetForm from '../Tweet/TweetForm'
 
 function CreateTweetTop() {
+  const { createTweet } = useTweet()
+
   const handleSubmit = async (text) => {
-    // create tweet here
+    // create tweet
+    createTweet(text)
   }
 
   return (

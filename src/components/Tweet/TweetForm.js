@@ -54,6 +54,7 @@ function TweetForm({
   shouldFocus = false,
   replyingTo = null,
   rows = null,
+  initialHeight = 74,
 }) {
   const MAX_INPUT_LENGTH = 280
   const inputRef = useRef()
@@ -65,7 +66,7 @@ function TweetForm({
     setExpanded(true)
   }
 
-  const submit = async (e) => {
+  const handleOnSubmit = async (e) => {
     e.preventDefault()
 
     if (exceededMaxLength) {
@@ -100,7 +101,7 @@ function TweetForm({
         </span>
       )}
 
-      <div onSubmit={submit} className={cx('form', className)}>
+      <form onSubmit={handleOnSubmit} className={cx('form', className)}>
         <div className={cx('user')}>
           <img className={cx('avatar')} src={user.image} alt={user.name} />
         </div>
@@ -113,9 +114,11 @@ function TweetForm({
               onChange={(e) => {
                 setText(e.target.value)
 
-                // Increase height
-                e.target.style.height = '5px'
-                e.target.style.height = e.target.scrollHeight + 'px'
+                // Auto increase height
+                if (e.target.scrollHeight > initialHeight) {
+                  e.target.style.height = 5 + 'px'
+                  e.target.style.height = e.target.scrollHeight + 'px'
+                }
               }}
               placeholder={placeholder}
               value={text}
@@ -171,7 +174,7 @@ function TweetForm({
             </div>
           </div>
         </div>
-      </div>
+      </form>
     </div>
   )
 }

@@ -1,7 +1,15 @@
 .wrapper {
+  position: relative;
   display: flex;
-  border-bottom: 1px solid #333;
+  border-bottom: 1px solid rgb(239, 243, 244);
   padding: 15px;
+
+  &:hover {
+    cursor: pointer;
+    background-color: rgba(0, 0, 0, 0.03);
+    transition-property: background-color, box-shadow;
+    transition-duration: 0.2s;
+  }
 }
 
 .user-image {
@@ -40,13 +48,71 @@
   }
 }
 
-.tweet-action-value {
-  margin-left: 10px;
-  color: #666;
+.action {
+  color: rgb(83, 100, 113);
 
-  &.colored {
+  &.comment-hovering {
     color: var(--primaryColor);
+
+    .icon-overlay {
+      background-color: rgba(29, 155, 240, 0.1);
+    }
   }
+
+  &.retweet-hovering {
+    color: rgb(0, 186, 124);
+
+    .icon-overlay {
+      background-color: rgba(0, 186, 124, 0.1);
+    }
+  }
+
+  &.heart-hovering {
+    color: rgb(249, 24, 128);
+
+    .icon-overlay {
+      background-color: rgba(249, 24, 128, 0.1);
+    }
+  }
+
+  &.upload-hovering {
+    color: var(--primaryColor);
+
+    .icon-overlay {
+      background-color: rgba(29, 155, 240, 0.1);
+    }
+  }
+
+  &.liked {
+    color: rgb(249, 24, 128);
+  }
+}
+
+.tweet-action-icon {
+  display: inline-flex;
+  position: relative;
+}
+
+.icon-overlay {
+  display: inline-flex;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  margin: -8px;
+  border-radius: 9999px;
+  transition-property: background-color, box-shadow;
+  transition-duration: 0.2s;
+  outline-style: none;
+  background-color: rgba(0, 0, 0, 0);
+}
+
+.tweet-action-value {
+  text-align: center;
+  font-size: 13px;
+  padding: 0 12px;
+  min-width: calc(1em + 24px);
 }
 
 // .tweet-image {
@@ -62,7 +128,7 @@
 // }
 
 .tweet-text {
-  color: white;
+  color: rgb(15, 20, 25);
   font-size: 15px;
   line-height: 20px;
   margin-top: 3px;
@@ -74,8 +140,21 @@
   text-decoration: none;
 }
 
-.more {
-  width: 40px;
-  height: 40px;
+.more-btn {
+  width: 35px;
+  height: 35px;
   display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 10px;
+  right: 16px;
+  border-radius: 9999px;
+  color: rgb(83, 100, 113);
+
+  &:hover {
+    color: rgb(29, 155, 240);
+    background-color: rgba(29, 155, 240, 0.1);
+    transition-property: background-color, box-shadow;
+  }
 }

@@ -27,10 +27,14 @@ function DefaultLayout({ children }) {
           <div className={cx('left-sidebar')}>
             <LeftSidebar onClickTweetBtn={() => setCreateDialogOpened(true)} />
           </div>
-          <main className={cx('main-content')}>{user ? children : <LoadingIndicator />}</main>
-          <div className={cx('right-sidebar')}>
-            <RightSidebar />
-          </div>
+          <main>
+            <div className={cx('content-inner')}>
+              <div className={cx('main-content')}>{user ? children : <LoadingIndicator />}</div>
+              <div className={cx('right-sidebar')}>
+                <RightSidebar />
+              </div>
+            </div>
+          </main>
         </div>
       </div>
     </>

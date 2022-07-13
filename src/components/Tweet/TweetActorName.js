@@ -21,7 +21,7 @@ function TweetActorName({ time, name, id }) {
     : format(new Date(time), 'MMM d')
 
   return (
-    <Link to={`/${id}`}>
+    <Link to={`/${id}`} className={cx('wrapper')}>
       <span className={cx('fullname')}>{name}</span>
       <span className={cx('username')}>@{id}</span>
       <span className={cx('tweet-date')}>{timeText}</span>
