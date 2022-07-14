@@ -1,0 +1,152 @@
+.container {
+  padding: 12px 16px 0;
+  margin-bottom: 16px;
+}
+
+.top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  position: relative;
+  min-height: 68px;
+}
+
+.avatar {
+  position: absolute;
+  top: -110%;
+  min-width: 48px;
+  width: 25%;
+  border: 5px solid #fff;
+  border-radius: 50%;
+  margin-bottom: 12px;
+
+  img {
+    width: 100%;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 50%;
+  }
+}
+
+.actions {
+  text-align: right;
+  flex-grow: 1;
+}
+
+.action-items {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.action-btn {
+  min-width: 36px;
+  min-height: 36px;
+  margin-right: 8px;
+  color: rgb(15, 20, 25);
+  font-size: 15px;
+  font-weight: 700;
+  border: 1px solid rgb(207, 217, 222);
+  border-radius: 9999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+
+  &:hover {
+    background-color: rgba(15, 20, 25, 0.1);
+  }
+}
+
+.follow-btn {
+  height: 36px;
+
+  button {
+    height: 100%;
+  }
+}
+
+.edit-profile-btn {
+  margin-bottom: 12px;
+  padding: 0 16px;
+  min-width: 36px;
+  min-height: 36px;
+  outline-style: none;
+  transition-property: background-color, box-shadow;
+  transition-duration: 0.2s;
+  border: 1px solid rgb(207, 217, 222);
+  border-radius: 9999px;
+  color: rgb(15, 20, 25);
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 20px;
+
+  &:hover {
+    background-color: rgba(15, 20, 25, 0.1);
+  }
+}
+
+.details {
+  margin-bottom: 16px;
+
+  .fullname {
+    font-size: 20px;
+    font-weight: 800;
+    line-height: 24px;
+  }
+
+  .username {
+    color: rgb(83, 100, 113);
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 20px;
+    margin-bottom: 12px;
+  }
+
+  .bio {
+    color: rgb(15, 20, 25);
+    font-size: 15px;
+    line-height: 20px;
+    margin-bottom: 12px;
+  }
+
+  .joined-on {
+    display: flex;
+    align-items: center;
+    margin-bottom: 12px;
+    color: rgb(83, 100, 113);
+
+    svg {
+      margin-right: 4px;
+    }
+  }
+
+  .follows {
+    display: flex;
+    align-items: center;
+
+    .number {
+      font-weight: 700;
+      margin-right: 4px;
+    }
+  }
+
+  .following-count {
+    display: flex;
+    align-items: center;
+    margin-right: 20px;
+
+    .label {
+      color: rgb(83, 100, 113);
+    }
+  }
+
+  .followers-count {
+    display: flex;
+    align-items: center;
+
+    .label {
+      color: rgb(83, 100, 113);
+    }
+  }
+}
