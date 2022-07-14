@@ -1,14 +1,9 @@
-export default function ArrowLeft({ color = 'block', size = 18 }) {
+export default function ArrowLeft({ width, height }) {
   return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 24 24"
-      width={size}
-      height={size}
-      fill={color}
-    >
-      <path fill="none" d="M0 0h24v24H0z" />
-      <path d="M7.828 11H20v2H7.828l5.364 5.364-1.414 1.414L4 12l7.778-7.778 1.414 1.414z" />
+    <svg width={width} height={height} viewBox="0 0 24 24" aria-hidden="true">
+      <g>
+        <path d="M20 11H7.414l4.293-4.293c.39-.39.39-1.023 0-1.414s-1.023-.39-1.414 0l-6 6c-.39.39-.39 1.023 0 1.414l6 6c.195.195.45.293.707.293s.512-.098.707-.293c.39-.39.39-1.023 0-1.414L7.414 13H20c.553 0 1-.447 1-1s-.447-1-1-1z"></path>
+      </g>
     </svg>
   )
 }
