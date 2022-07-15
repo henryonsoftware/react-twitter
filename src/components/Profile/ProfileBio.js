@@ -32,8 +32,7 @@ function ProfileBio() {
 
   const bio = formatStringWithLink(user.data.bio)
 
-  const isLoggedInUserProfile = false
-  //user.id === client.userId
+  const isLoggedInUserProfile = user.id === client.userId
 
   return (
     <div className={cx('container')}>

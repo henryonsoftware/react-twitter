@@ -7,6 +7,7 @@ import { getFromStorage } from './utils/storage'
 import StartPage from './pages/StartPage'
 import HomePage from './pages/HomePage'
 import ScrollToTop from './components/ScrollToTop'
+import ProfilePage from './pages/ProfilePage'
 
 const APP_ID = '1197595'
 const API_KEY = 'mnahj4hug5pj'
@@ -14,7 +15,7 @@ const API_KEY = 'mnahj4hug5pj'
 function App({ onClickTweet }) {
   const userId = getFromStorage('user')
 
-  const user = users.find((u) => u.id === userId || users[0])
+  const user = users.find((u) => u.id === userId) || users[0]
 
   const [client, setClient] = useState(null)
 
@@ -41,6 +42,7 @@ function App({ onClickTweet }) {
         <Routes>
           <Route path="/" element={<StartPage />} />
           <Route path="/home" element={<HomePage />} />
+          <Route path="/:user_id" element={<ProfilePage />} />
         </Routes>
       </Router>
     </StreamApp>
