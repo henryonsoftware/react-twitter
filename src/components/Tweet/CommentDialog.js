@@ -21,25 +21,25 @@ function CommentDialog({ activity, onPostComment, onClickOutside }) {
   }
 
   return (
-    <div className={cx('wrapper')}>
-      <Modal className="modal-block" onClickOutside={onClickOutside}>
-        <div className={cx('block-content')}>
+    <div>
+      <Modal className={cx('modal-block')} onClickOutside={onClickOutside}>
+        <div>
           <div className={cx('tweet')}>
-            <div className={cx('img')}>
+            <div className={cx('avatar')}>
               <img src={tweetActor.data.image} alt="" />
+              <div className={cx('tweet-connector')}></div>
             </div>
             <div className={cx('details')}>
-              <TweetActorName time={activity.time} name={tweetActor.data.name} id={tweetActor.data.id}>
-                <p
-                  className="tweet-text"
-                  dangerouslySetInnerHTML={{
-                    __html: formatStringWithLink(tweet.text, 'tweet__text--link', true).replace(/\n/g, '<br/>'),
-                  }}
-                />
-                <div className={cx('replying-info')}>
-                  Replying to <span className={cx('replying-info-actor')}>@{tweetActor.data.id}</span>
-                </div>
-              </TweetActorName>
+              <TweetActorName time={activity.time} name={tweetActor.data.name} id={tweetActor.data.id} />
+              <p
+                className={cx('tweet-text')}
+                dangerouslySetInnerHTML={{
+                  __html: formatStringWithLink(tweet.text, 'tweet__text--link', true).replace(/\n/g, '<br/>'),
+                }}
+              />
+              <div className={cx('replying-info')}>
+                Replying to <span className={cx('replying-info-actor')}>@{tweetActor.data.id}</span>
+              </div>
             </div>
           </div>
 
@@ -48,8 +48,10 @@ function CommentDialog({ activity, onPostComment, onClickOutside }) {
               className={cx('comment-form')}
               submitText="Reply"
               placeholder="Tweet your reply"
+              rows={4}
               onSubmit={handleSubmit}
               shouldFocus={true}
+              initialHeight={125}
             ></TweetForm>
           </div>
         </div>

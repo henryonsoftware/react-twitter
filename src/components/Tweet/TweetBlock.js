@@ -13,6 +13,7 @@ import CommentDialog from './CommentDialog'
 import { formatStringWithLink } from '../../utils/string'
 import { generateTweetLink } from '../../utils/links'
 import useLike from '~/hooks/useLike'
+import useComment from '~/hooks/useComment'
 
 const cx = classNames.bind(styles)
 
@@ -26,6 +27,8 @@ function TweetBlock({ activity }) {
   const [isHoveringOnId, setIsHoveringOnId] = useState('')
 
   const { toggleLike } = useLike()
+
+  const { createComment } = useComment()
 
   const actor = activity.actor
 
@@ -45,7 +48,7 @@ function TweetBlock({ activity }) {
   }
 
   const handleOnPostComment = async (text) => {
-    // create comment
+    await createComment(text, activity)
   }
 
   const handleMouseOver = (id) => {
