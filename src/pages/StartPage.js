@@ -1,6 +1,6 @@
 import classNames from 'classnames/bind'
-import users from '../users'
-import { saveToStorage } from '../utils/storage'
+import users from '~/data/users'
+import { saveToStorage } from '~/utils/storage'
 import styles from './StartPage.module.scss'
 
 const cx = classNames.bind(styles)

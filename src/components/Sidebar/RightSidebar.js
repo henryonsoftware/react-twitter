@@ -7,7 +7,7 @@ import MoreDot from '../Icons/MoreDot'
 import Clear from '../Icons/Clear'
 import FollowBtn from '../FollowBtn'
 import styles from './RightSidebar.module.scss'
-import users from '../../users'
+import users from '~/data/users'
 
 const cx = classNames.bind(styles)
 
