@@ -12,6 +12,7 @@ import TweetActorName from './TweetActorName'
 import CommentDialog from './CommentDialog'
 import { formatStringWithLink } from '../../utils/string'
 import { generateTweetLink } from '../../utils/links'
+import useLike from '~/hooks/useLike'
 
 const cx = classNames.bind(styles)
 
@@ -24,11 +25,13 @@ function TweetBlock({ activity }) {
 
   const [isHoveringOnId, setIsHoveringOnId] = useState('')
 
+  const { toggleLike } = useLike()
+
   const actor = activity.actor
 
-  let hasLikedTweet = true
-
   const tweet = activity.object.data
+
+  let hasLikedTweet = false
 
   // Check if current logged in user has liked the tweet
   if (activity?.own_reactions?.like) {
@@ -37,8 +40,8 @@ function TweetBlock({ activity }) {
     hasLikedTweet = Boolean(myReaction)
   }
 
-  const handleToggleLike = () => {
-    // toggle like activity
+  const handleToggleLike = async () => {
+    await toggleLike(activity)
   }
 
   const handleOnPostComment = async (text) => {
