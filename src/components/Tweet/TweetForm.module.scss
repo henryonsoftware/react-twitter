@@ -3,22 +3,22 @@
 }
 
 .reply-to {
-  font-size: 14px;
-  color: #888;
+  font-size: 15px;
+  color: rgb(83, 100, 113);
   display: flex;
-  margin-left: 55px;
+  margin-left: 60px;
   margin-bottom: 10px;
 }
 
-.reply-to-username {
+.replying-to-username {
   margin-left: 4px;
-  color: var(--theme-color);
+  color: var(--primaryColor);
+  cursor: pointer;
 }
 
 .form {
   width: 100%;
   display: flex;
-  //   align-items: ${({ inline }) => (inline ? 'center' : 'initial')};
 }
 
 .user {
@@ -44,9 +44,6 @@
   display: flex;
   color: #536471;
   overflow-wrap: break-word;
-  // flex-direction: ${({ inline }) => (inline ? 'row' : 'column')};
-  // align-items: ${({ inline }) => (inline ? 'center' : 'initial')};
-  // height: ${({ inline, minHeight }) => (inline ? '40px' : minHeight)};
 }
 
 textarea {
@@ -58,13 +55,9 @@ textarea {
   width: 100%;
   flex: 1;
   outline: none;
-  border-bottom: 1px solid #fff;
   overflow: hidden;
   resize: none;
-
-  &:focus {
-    border-color: var(--borderColor);
-  }
+  min-height: 72px;
 
   &::placeholder {
     color: #536471;
@@ -74,9 +67,7 @@ textarea {
 }
 
 .actions {
-  // margin-top: ${({ inline }) => (inline ? '0' : 'auto')};
   margin-left: -6px;
-  height: 50px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -85,6 +76,8 @@ textarea {
 .action-items {
   display: flex;
   align-items: center;
+  padding-top: 6px;
+  padding-bottom: 6px;
 }
 
 .action-item {
@@ -157,7 +150,8 @@ textarea {
   margin: 0 18px;
 }
 
-.submit-btn {
+.submit-btn,
+.temp-submit-btn {
   background-color: var(--primaryColor);
   padding: 10px 20px;
   color: white;
@@ -169,4 +163,8 @@ textarea {
   &:disabled {
     opacity: 0.6;
   }
+}
+
+.temp-submit-btn {
+  align-self: start;
 }

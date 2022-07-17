@@ -2,50 +2,12 @@ import classNames from 'classnames/bind'
 import { useEffect, useRef, useState } from 'react'
 import { useStreamContext } from 'react-activity-feed'
 import ProgressRing from '../Icons/ProgressRing'
-import Image from '../Icons/Image'
-import Gif from '../Icons/Gif'
-import Poll from '../Icons/Poll'
-import Emoji from '../Icons/Emoji'
-import Calendar from '../Icons/Calendar'
-import Location from '../Icons/Location'
 import styles from './TweetForm.module.scss'
 
 const cx = classNames.bind(styles)
 
-const actions = [
-  {
-    id: 'image',
-    Icon: Image,
-    alt: 'Image',
-  },
-  {
-    id: 'gif',
-    Icon: Gif,
-    alt: 'GIF',
-  },
-  {
-    id: 'poll',
-    Icon: Poll,
-    alt: 'Poll',
-  },
-  {
-    id: 'emoji',
-    Icon: Emoji,
-    alt: 'Emoji',
-  },
-  {
-    id: 'schedule',
-    Icon: Calendar,
-    alt: 'Schedule',
-  },
-  {
-    id: 'location',
-    Icon: Location,
-    alt: 'Location',
-  },
-]
-
 function TweetForm({
+  actions,
   submitText = 'Tweet',
   onSubmit,
   className,
@@ -62,7 +24,7 @@ function TweetForm({
   const [text, setText] = useState('')
   const [expanded, setExpanded] = useState(!collapsedOnMount)
 
-  const onClick = () => {
+  const handleInputOnClick = () => {
     setExpanded(true)
   }
 
@@ -122,8 +84,15 @@ function TweetForm({
               }}
               placeholder={placeholder}
               value={text}
-              onClick={onClick}
+              onClick={handleInputOnClick}
             />
+
+            {/* This is temporary button for reply a tweet, display until the input has been focused */}
+            {isReplying && !expanded && (
+              <button type="submit" className={cx('temp-submit-btn')} disabled={true}>
+                {submitText}
+              </button>
+            )}
           </div>
 
           <div className={cx('actions')}>
@@ -168,9 +137,13 @@ function TweetForm({
 
               {!isInputEmpty && <hr className={cx('divider')} />}
 
-              <button type="submit" className={cx('submit-btn')} disabled={isInputEmpty || exceededMaxLength}>
-                {submitText}
-              </button>
+              {/* This button to create the Top Tweet on homepage */}
+              {/* Or to Reply a Tweet on a Thread when the input has been focused */}
+              {(!isReplying || (isReplying && expanded)) && (
+                <button type="submit" className={cx('submit-btn')} disabled={isInputEmpty || exceededMaxLength}>
+                  {submitText}
+                </button>
+              )}
             </div>
           </div>
         </div>

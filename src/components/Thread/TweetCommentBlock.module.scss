@@ -1,23 +1,23 @@
-.wrapper {
+.tweet-comment-block {
   position: relative;
   display: flex;
   border-bottom: 1px solid rgb(239, 243, 244);
-  padding: 15px;
+  padding: 14px 16px;
+  // cursor: pointer;
 
-  &:hover {
-    cursor: pointer;
-    background-color: rgba(0, 0, 0, 0.03);
-    transition-property: background-color, box-shadow;
-    transition-duration: 0.2s;
-  }
+  // &:hover {
+  //   background-color: rgba(0, 0, 0, 0.03);
+  //   transition-property: background-color, box-shadow;
+  //   transition-duration: 0.2s;
+  // }
 }
 
 .user-image {
-  width: 40px;
-  height: 40px;
+  width: 48px;
+  height: 48px;
   border-radius: 50%;
   overflow: hidden;
-  margin-right: 10px;
+  margin-right: 15px;
 
   img {
     width: 100%;
@@ -26,14 +26,24 @@
   }
 }
 
-.tweet {
+.comment {
   flex: 1;
 
-  .link {
+  .content {
     display: block;
     padding-bottom: 5px;
+  }
+
+  .tweet-text {
+    color: rgb(15, 20, 25);
+    font-size: 15px;
+    line-height: 20px;
+    margin-top: 3px;
+  }
+
+  .tweet-text-link {
+    color: var(--primaryColor);
     text-decoration: none;
-    width: 100%;
   }
 }
 
@@ -114,19 +124,6 @@
   font-size: 13px;
   padding: 0 12px;
   min-width: calc(1em + 24px);
-}
-
-.tweet-text {
-  color: rgb(15, 20, 25);
-  font-size: 15px;
-  line-height: 20px;
-  margin-top: 3px;
-  width: 100%;
-}
-
-.tweet-text-link {
-  color: var(--primaryColor);
-  text-decoration: none;
 }
 
 .more-btn {

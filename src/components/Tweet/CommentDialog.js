@@ -4,10 +4,49 @@ import Modal from '../Modals/NewTweet/Modal'
 import TweetActorName from './TweetActorName'
 import TweetForm from './TweetForm'
 import { formatStringWithLink } from '../../utils/string'
+import Image from '~/components/Icons/Image'
+import Gif from '~/components/Icons/Gif'
+import Poll from '~/components/Icons/Poll'
+import Emoji from '~/components/Icons/Emoji'
+import Calendar from '~/components/Icons/Calendar'
+import Location from '~/components/Icons/Location'
 
 const cx = classNames.bind(styles)
 
 function CommentDialog({ activity, onPostComment, onClickOutside }) {
+  const actions = [
+    {
+      id: 'image',
+      Icon: Image,
+      alt: 'Image',
+    },
+    {
+      id: 'gif',
+      Icon: Gif,
+      alt: 'GIF',
+    },
+    {
+      id: 'poll',
+      Icon: Poll,
+      alt: 'Poll',
+    },
+    {
+      id: 'emoji',
+      Icon: Emoji,
+      alt: 'Emoji',
+    },
+    {
+      id: 'schedule',
+      Icon: Calendar,
+      alt: 'Schedule',
+    },
+    {
+      id: 'location',
+      Icon: Location,
+      alt: 'Location',
+    },
+  ]
+
   const {
     object: { data: tweet },
   } = activity
@@ -45,6 +84,7 @@ function CommentDialog({ activity, onPostComment, onClickOutside }) {
 
           <div className={cx('comment')}>
             <TweetForm
+              actions={actions}
               className={cx('comment-form')}
               submitText="Reply"
               placeholder="Tweet your reply"
@@ -52,7 +92,7 @@ function CommentDialog({ activity, onPostComment, onClickOutside }) {
               onSubmit={handleSubmit}
               shouldFocus={true}
               initialHeight={125}
-            ></TweetForm>
+            />
           </div>
         </div>
       </Modal>

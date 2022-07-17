@@ -44,7 +44,7 @@ function TweetBlock({ activity }) {
   }
 
   const handleToggleLike = async () => {
-    await toggleLike(activity)
+    await toggleLike(activity, hasLikedTweet)
   }
 
   const handleOnPostComment = async (text) => {
@@ -59,7 +59,7 @@ function TweetBlock({ activity }) {
     setIsHoveringOnId('')
   }
 
-  const actions = [
+  const reactions = [
     {
       id: 'comment',
       Icon: Comment,
@@ -90,63 +90,65 @@ function TweetBlock({ activity }) {
   const tweetLink = activity.id ? generateTweetLink(actor.id, activity.id) : '#'
 
   return (
-    <>
-      <div className={cx('wrapper')}>
-        <div className={cx('user-image')}>
-          <img src={actor.data.image} alt={actor.data.name} />
-        </div>
-        <div className={cx('tweet')}>
-          <button className={cx('link')}>
-            <TweetActorName time={activity.time} name={actor.data.name} id={actor.id} />
-            <div className={cx('tweet-detail')}>
-              <p
-                className={cx('tweet-text')}
-                dangerouslySetInnerHTML={{
-                  __html: formatStringWithLink(tweet.text, 'tweet-text-link').replace(/\n/g, '<br />'),
-                }}
-              />
-            </div>
-          </button>
-
-          <div className={cx('tweet-actions')}>
-            {actions.map((action) => {
-              return (
-                <button
-                  className={cx('action', isHoveringOnId === action.id ? `${action.id}-hovering` : '', {
-                    liked: action.id === 'heart' && hasLikedTweet,
-                  })}
-                  type="button"
-                  onClick={(e) => {
-                    e.stopPropagation()
-                    action.onClick?.()
-                  }}
-                  onMouseOver={() => handleMouseOver(action.id)}
-                  onMouseLeave={handleMouseLeave}
-                  key={action.id}
-                >
-                  <div className={cx('tweet-action-icon')}>
-                    <div className={cx('icon-overlay')}></div>
-                    <action.Icon width={19} height={19} fill={action.id === 'heart' && hasLikedTweet && true} />
-                  </div>
-                  <span className={cx('tweet-action-value')}>{action.value}</span>
-                </button>
-              )
-            })}
+    <div>
+      <div onClick={() => navigate(tweetLink)}>
+        <div className={cx('wrapper')}>
+          <div className={cx('user-image')}>
+            <img src={actor.data.image} alt={actor.data.name} />
           </div>
+          <div className={cx('tweet')}>
+            <button className={cx('link')}>
+              <TweetActorName time={activity.time} name={actor.data.name} id={actor.id} />
+              <div className={cx('tweet-detail')}>
+                <p
+                  className={cx('tweet-text')}
+                  dangerouslySetInnerHTML={{
+                    __html: formatStringWithLink(tweet.text, 'tweet-text-link').replace(/\n/g, '<br />'),
+                  }}
+                />
+              </div>
+            </button>
+
+            <div className={cx('tweet-actions')}>
+              {reactions.map((action) => {
+                return (
+                  <button
+                    key={action.id}
+                    className={cx('action', isHoveringOnId === action.id ? `${action.id}-hovering` : '', {
+                      liked: action.id === 'heart' && hasLikedTweet,
+                    })}
+                    type="button"
+                    onMouseOver={() => handleMouseOver(action.id)}
+                    onMouseLeave={handleMouseLeave}
+                    onClick={(e) => {
+                      e.stopPropagation()
+                      action.onClick?.()
+                    }}
+                  >
+                    <div className={cx('tweet-action-icon')}>
+                      <div className={cx('icon-overlay')}></div>
+                      <action.Icon width={19} height={19} fill={action.id === 'heart' && hasLikedTweet && true} />
+                    </div>
+                    <span className={cx('tweet-action-value')}>{action.value}</span>
+                  </button>
+                )
+              })}
+            </div>
+          </div>
+          <button className={cx('more-btn')} title="More">
+            <MoreDot width={19} height={19} />
+          </button>
         </div>
-        <button className={cx('more-btn')} title="More">
-          <MoreDot width={19} height={19} />
-        </button>
+        {activity.id && commentDialogOpened && (
+          <CommentDialog
+            onPostComment={handleOnPostComment}
+            shouldOpen={commentDialogOpened}
+            onClickOutside={() => setCommentDialogOpened(false)}
+            activity={activity}
+          />
+        )}
       </div>
-      {activity.id && commentDialogOpened && (
-        <CommentDialog
-          onPostComment={handleOnPostComment}
-          shouldOpen={commentDialogOpened}
-          onClickOutside={() => setCommentDialogOpened(false)}
-          activity={activity}
-        />
-      )}
-    </>
+    </div>
   )
 }
 

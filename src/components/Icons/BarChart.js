@@ -1,14 +1,9 @@
-export default function BarChart({ color = 'block', size = 18 }) {
+export default function BarChart({ width, height }) {
   return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 24 24"
-      width={size}
-      height={size}
-      fill={color}
-    >
-      <path fill="none" d="M0 0h24v24H0z" />
-      <path d="M3 12h2v9H3v-9zm16-4h2v13h-2V8zm-8-6h2v19h-2V2z" />
+    <svg width={width} height={height} viewBox="0 0 24 24" aria-hidden="true" fill="currentColor">
+      <g>
+        <path d="M12 22c-.414 0-.75-.336-.75-.75V2.75c0-.414.336-.75.75-.75s.75.336.75.75v18.5c0 .414-.336.75-.75.75zm5.14 0c-.415 0-.75-.336-.75-.75V7.89c0-.415.335-.75.75-.75s.75.335.75.75v13.36c0 .414-.337.75-.75.75zM6.86 22c-.413 0-.75-.336-.75-.75V10.973c0-.414.337-.75.75-.75s.75.336.75.75V21.25c0 .414-.335.75-.75.75z"></path>
+      </g>
     </svg>
   )
 }
