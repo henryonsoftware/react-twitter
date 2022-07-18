@@ -91,15 +91,15 @@ function TweetBlock({ activity }) {
 
   return (
     <div>
-      <div onClick={() => navigate(tweetLink)}>
+      <div>
         <div className={cx('wrapper')}>
           <div className={cx('user-image')}>
             <img src={actor.data.image} alt={actor.data.name} />
           </div>
           <div className={cx('tweet')}>
-            <button className={cx('link')}>
+            <div className={cx('link')}>
               <TweetActorName time={activity.time} name={actor.data.name} id={actor.id} />
-              <div className={cx('tweet-detail')}>
+              <div className={cx('tweet-detail')} onClick={() => navigate(tweetLink)}>
                 <p
                   className={cx('tweet-text')}
                   dangerouslySetInnerHTML={{
@@ -107,7 +107,7 @@ function TweetBlock({ activity }) {
                   }}
                 />
               </div>
-            </button>
+            </div>
 
             <div className={cx('tweet-actions')}>
               {reactions.map((action) => {
