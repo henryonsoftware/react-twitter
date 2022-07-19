@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react'
 import useNotification from './useNotification'
 
 export default function useFollow(userId) {
-  const { client, user } = useStreamContext()
+  const { client } = useStreamContext()
   const { createNotification } = useNotification()
   const [isFollowing, setIsFollowing] = useState(false)
 

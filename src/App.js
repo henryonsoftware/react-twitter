@@ -9,6 +9,7 @@ import HomePage from './pages/HomePage'
 import ScrollToTop from './components/ScrollToTop'
 import ProfilePage from './pages/ProfilePage'
 import ThreadPage from './pages/ThreadPage'
+import NotificationPage from './pages/NotificationPage'
 
 const APP_ID = '1197595'
 const API_KEY = 'mnahj4hug5pj'
@@ -45,6 +46,7 @@ function App({ onClickTweet }) {
           <Route path="/home" element={<HomePage />} />
           <Route path="/:user_id" element={<ProfilePage />} />
           <Route path="/:user_id/status/:id" element={<ThreadPage />} />
+          <Route path="/notifications" element={<NotificationPage />} />
         </Routes>
       </Router>
     </StreamApp>

@@ -1,6 +1,6 @@
 import { useStreamContext } from 'react-activity-feed'
 
-function useNotification() {
+export default function useNotification() {
   const { client } = useStreamContext()
 
   const createNotification = async (userId, verb, data, reference = {}) => {
@@ -17,5 +17,3 @@ function useNotification() {
 
   return { createNotification }
 }
-
-export default useNotification

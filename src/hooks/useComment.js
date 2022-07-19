@@ -6,13 +6,11 @@ export default function useComment() {
   const { createNotification } = useNotification()
   const { user } = useStreamContext()
 
-  const createComment = async (text, activity) => {
-    await feed.onAddReaction('comment', activity, { text })
+  const createComment = async (text, tweet) => {
+    await feed.onAddReaction('comment', tweet, { text })
 
-    const activityActor = activity.actor
-
-    if (activityActor.id !== user.id) {
-      createNotification(activityActor.id, 'comment', { text }, `SO:tweet:${activity.object.id}`)
+    if (tweet.actor.id !== user.id) {
+      createNotification(tweet.actor.id, 'comment', { text }, `SO:tweet:${tweet.object.id}`)
     }
   }
 

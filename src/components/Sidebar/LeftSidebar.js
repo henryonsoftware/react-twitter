@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useStreamContext } from 'react-activity-feed'
 import { useLocation } from 'react-router-dom'
 import { Link } from 'react-router-dom'
@@ -18,8 +18,30 @@ const cx = classNames.bind(styles)
 
 function LeftSidebar({ onClickTweetBtn }) {
   const location = useLocation()
-  const { userData } = useStreamContext()
+  const { client, userData } = useStreamContext()
   const [newNotifications, setNewNotifications] = useState(0)
+
+  useEffect(() => {
+    if (!userData || location.pathname === '/notifications') return
+
+    let notifyFeed
+
+    async function init() {
+      notifyFeed = client.feed('notification', userData.id)
+
+      const notifications = await notifyFeed.get()
+
+      const unread = notifications.results.filter((notification) => !notification.is_seen)
+
+      setNewNotifications(unread.length)
+
+      notifyFeed.subscribe((data) => setNewNotifications(newNotifications + data.new.length))
+    }
+
+    init()
+
+    return () => notifyFeed?.unsubscribe()
+  }, [userData])
 
   if (!userData) {
     return (
@@ -88,7 +110,7 @@ function LeftSidebar({ onClickTweetBtn }) {
                 <div className={cx('menu-item-inner')}>
                   <div className={cx('btn-icon')}>
                     {newNotifications && menu.id === 'notifications' ? (
-                      <span className="notifications-count">{newNotifications}</span>
+                      <span className={cx('notifications-count')}>{newNotifications}</span>
                     ) : null}
                     <menu.Icon fill={isActiveLink} width={26} height={26} />
                   </div>

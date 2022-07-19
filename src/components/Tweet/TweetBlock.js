@@ -87,7 +87,7 @@ function TweetBlock({ activity }) {
     },
   ]
 
-  const tweetLink = activity.id ? generateTweetLink(actor.id, activity.id) : '#'
+  const tweetLink = activity.id && actor.id ? generateTweetLink(actor.id, activity.id) : '#'
 
   return (
     <div>
@@ -100,12 +100,13 @@ function TweetBlock({ activity }) {
             <div className={cx('link')}>
               <TweetActorName time={activity.time} name={actor.data.name} id={actor.id} />
               <div className={cx('tweet-detail')} onClick={() => navigate(tweetLink)}>
-                <p
-                  className={cx('tweet-text')}
-                  dangerouslySetInnerHTML={{
-                    __html: formatStringWithLink(tweet.text, 'tweet-text-link').replace(/\n/g, '<br />'),
-                  }}
-                />
+                <div className={cx('tweet-text')}>
+                  <p
+                    dangerouslySetInnerHTML={{
+                      __html: formatStringWithLink(tweet.text, 'tweet-text-link').replace(/\n/g, '<br />'),
+                    }}
+                  />
+                </div>
               </div>
             </div>
 
