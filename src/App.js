@@ -14,7 +14,7 @@ import NotificationPage from './pages/NotificationPage'
 const APP_ID = '1197595'
 const API_KEY = 'mnahj4hug5pj'
 
-function App({ onClickTweet }) {
+function App() {
   const userId = getFromStorage('user')
 
   const user = users.find((u) => u.id === userId) || users[0]
