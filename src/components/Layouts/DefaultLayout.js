@@ -1,7 +1,6 @@
 import { useState } from 'react'
 import { useStreamContext } from 'react-activity-feed'
 import classNames from 'classnames/bind'
-
 import styles from './DefaultLayout.module.scss'
 import LoadingIndicator from '../LoadingIndicator'
 import CreateTweetDialog from '../Tweet/CreateTweetDialog'

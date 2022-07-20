@@ -11,9 +11,6 @@ import ProfilePage from './pages/ProfilePage'
 import ThreadPage from './pages/ThreadPage'
 import NotificationPage from './pages/NotificationPage'
 
-const APP_ID = '1197595'
-const API_KEY = 'mnahj4hug5pj'
-
 function App() {
   const userId = getFromStorage('user')
 
@@ -23,7 +20,7 @@ function App() {
 
   useEffect(() => {
     async function init() {
-      const client = new StreamClient(API_KEY, user.token, APP_ID)
+      const client = new StreamClient(process.env.REACT_APP_API_KEY, user.token, process.env.REACT_APP_APP_ID)
 
       await client.user(user.id).getOrCreate({ ...user, token: '' })
 
@@ -38,7 +35,7 @@ function App() {
   }
 
   return (
-    <StreamApp token={user.token} appId={APP_ID} apiKey={API_KEY}>
+    <StreamApp token={user.token} appId={process.env.REACT_APP_APP_ID} apiKey={process.env.REACT_APP_API_KEY}>
       <Router>
         <ScrollToTop />
         <Routes>
