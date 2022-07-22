@@ -97,7 +97,7 @@ function RightSidebar() {
                       <span className={cx('fullname')}>{user.name}</span>
                       <div className={cx('username-wrapper')}>
                         <span className={cx('username')}>@{user.id}</span>
-                        {!user.isFollowingYou && <span className={cx('follows-you')}>Follows you</span>}
+                        {user.isFollowingYou && <span className={cx('follows-you')}>Follows you</span>}
                       </div>
                     </div>
                     <div className={cx('follow-btn')}>
