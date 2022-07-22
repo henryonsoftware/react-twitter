@@ -1,7 +1,7 @@
 import classNames from 'classnames/bind'
 import { useState } from 'react'
 import styles from './FollowBtn.module.scss'
-import useFollow from '../hooks/useFollow'
+import useFollow from '~/hooks/useFollow'
 
 const cx = classNames.bind(styles)
 
@@ -13,12 +13,18 @@ function FollowBtn({ userId }) {
   return (
     <button
       className={cx('button', isFollowing ? 'following' : '', classHover)}
-      onClick={toggleFollow}
-      onMouseOver={() => {
+      onClick={(e) => {
+        e.preventDefault()
+
+        isFollowing ? setButtonText('Follow') : setButtonText('Following')
+
+        toggleFollow()
+      }}
+      onMouseEnter={() => {
         setButtonText('Unfollow')
         setClassHover('unfollow-hover')
       }}
-      onMouseLeave={(e) => {
+      onMouseLeave={() => {
         setButtonText('Following')
         setClassHover('')
       }}

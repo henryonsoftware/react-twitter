@@ -1,5 +1,5 @@
 .button {
-  min-width: 77px;
+  min-width: 100px;
   min-height: 32px;
   background-color: rgb(15, 20, 25);
   color: #fff;
@@ -10,6 +10,7 @@
   font-size: 14px;
   font-weight: 700;
   line-height: 20px;
+  text-align: center;
 
   &:hover {
     background-color: rgb(39, 44, 48);
@@ -19,7 +20,6 @@
 }
 
 .following {
-  width: 97px;
   background-color: rgba(0, 0, 0, 0);
   color: rgb(15, 20, 25);
   border: 1px solid rgb(207, 217, 222);
@@ -27,6 +27,6 @@
   &.unfollow-hover {
     background-color: rgba(244, 33, 46, 0.1);
     color: rgb(244, 33, 46);
-    border: 1px solid rgb(253, 201, 206);
+    border-color: rgb(253, 201, 206);
   }
 }
