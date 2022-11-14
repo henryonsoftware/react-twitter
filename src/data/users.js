@@ -1,40 +1,43 @@
 const users = [
   {
-    id: 'iamdillion',
-    name: 'Dillion',
-    image: 'https://i.pravatar.cc/150?u=fake@iamdillion.com',
-    bio: 'Just here, doing my thing. Developer advocate at @getstream_io',
+    id: 'henrybui',
+    name: 'Henry Bui',
+    image: 'https://i.pravatar.cc/150?u=fake@henrybui.com',
+    bio: 'Just here, doing my thing. Developer advocate at @github',
     token:
-      'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiaWFtZGlsbGlvbiJ9.uA8AdllQziVXJoYhtXquo_xwsnjWDMYHCBfrzZ8rTLw',
+      'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiaGVucnlidWkifQ.n-AkYM1sIEyNSmymZ0vwA2ihUO6wt69HGGzlz73NR4g',
   },
   {
-    id: 'getstream_io',
-    name: 'Stream',
-    image: 'https://i.pravatar.cc/150?u=fake@getstream_io.com',
-    bio: 'Deploy activity feeds and chat at scale with Stream – an API driven platform powering over a billion end users. Get started at http://getstream.io.',
+    id: 'tonyteo',
+    name: 'Tony Teo',
+    image: 'https://i.pravatar.cc/150?u=fake@tonyteo.com',
+    bio: 'No bio',
     token:
-      'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiZ2V0c3RyZWFtX2lvIn0.aKZTcOcdKE3Y8CrnUTeBpQqvfSstfQK3FNK9xMTALIU',
+      'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoidG9ueXRlbyJ9.aPOSwXBJKofoplx7mLhsR74HfeZ_MJytLiN9e3XNsb8',
   },
   {
-    id: 'jake',
-    name: 'Jake',
-    image: 'https://i.pravatar.cc/150?u=fake@jake.com',
-    bio: 'Just Jake, nothing much',
-    token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiamFrZSJ9.hrfg6FloD6jO0g7sKuduEeyIAbWtSHTvgLd-QuHF0RQ',
+    id: 'marrybui',
+    name: 'Marry',
+    image: 'https://i.pravatar.cc/150?u=fake@marry.com',
+    bio: 'Just Mary, nothing much',
+    token:
+      'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoibWFycnlidWkifQ.3XtTIJU-D5ZC2CwRuGPXnFTVkChqPsL4gCUbKo866Pg',
   },
   {
-    id: 'joe',
-    name: 'Joe',
-    image: 'https://i.pravatar.cc/150?u=fake@joe.com',
-    bio: 'How are you?',
-    token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiam9lIn0.8c3MJQOFMBS7EcJqpJDrtjbPDBcjf90---tn4jQsjoI',
+    id: 'johndoe',
+    name: 'John Doe',
+    image: 'https://i.pravatar.cc/150?u=johndoe@gmail.com',
+    bio: 'How are you? Welcome to my profile',
+    token:
+      'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiam9obmRvZSJ9.x9otL6xj2njRi21X67vuk10leVsquOtzMFlVV5-FXjs',
   },
   {
-    id: 'mike',
-    name: 'Mike',
-    image: 'https://i.pravatar.cc/150?u=fake@mike.com',
-    bio: 'I am mike here. I do things on #react and #javascript',
-    token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoibWlrZSJ9.THPVUCfebNT_loRTcfLuIxg3p3Jnol3j8iJ5f9LT4dU',
+    id: 'tonystark',
+    name: 'Tony Stark',
+    image: 'https://i.pravatar.cc/150?u=tonystark@gmail.com',
+    bio: 'I am Iron man',
+    token:
+      'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoidG9ueXN0YXJrIn0.KUs_Qq3alX7-uHr0sK5Sa8d3k2MktihHTkxUqCavzo0',
   },
 ]
 
